@@ -1,0 +1,94 @@
+Registration API: POST http://104.211.219.98/train/register
+
+Request:
+{
+  "company name": "Train Central",
+  "ownerName": "1",
+  "ownerEmail": "ram@abc.edu",
+  "accessCode": "FKDLjg"
+}
+Response (Status Code: 200):
+{
+  "company Name": "Train Central",
+  "clientID": "b46128a0-fbde-4c16-a4b1-6ae6ad718e27",
+  "clientSecret": "x0yolQRPayKB0dAN"
+}
+Authentication API: POST http://104.211.219.98/train/auth
+
+Request:
+{
+  "company name": "Train Central",
+  "clientID": "b46128a0-fbde-4c16-a4b1-6ae6ad718e27",
+  "ownerEmail": "ram@abc.edu",
+  "rollNo": "1",
+  "clientSecret": "X0yol0pRPayKB0dAN"
+}
+Response (Status Code: 200):
+{
+  "token_type": "Bearer",
+  "access_token": "eyJhbGci0iJI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiojE20DI2MjkyNjQsImNvbXBhbnl0YW1lIJOIVhJhaw4gQ2VudHJhbCIsImNsaWVudElEIjoiYjQ2MTE4ZmJkZS00YjE2LWE0YjEtNmFlNmFkNzE8YjI4ln0.v93QcxrZHWDTnTwm0-6ttoTGI4C65Grhn3rIJDC8fy8",
+  "expires_in": 1682629264
+}
+Get All Trains API: GET http://104.211.219.98/train/trains
+
+This is a protected route that requires the Authorization Token in the Header.
+
+Response (Status Code: 200):
+[
+  {
+    "trainName": "Chennai Exp",
+    "trainNumber": "2344",
+    "departureTime": {
+      "Hours": 21,
+      "Minutes": 35,
+      "Seconds": 0
+    },
+    "seatsAvailable": {
+      "sleeper": 3,
+      "AC": 1
+    },
+    "price": {
+      "sleeper": 2,
+      "AC": 5
+    },
+    "delayedBy": 15
+  },
+  {
+    "trainName": "Hyderabad Exp",
+    "trainNumber": "2314",
+    "departureTime": {
+      "Hours": 23,
+      "Minutes": 55,
+      "Seconds": 0
+    },
+    "seatsAvailable": {
+      "sleeper": 554,
+      "AC": 1854
+    },
+    "delayedBy": 5
+  }
+]
+
+Get Train Details API: GET http://104.211.219.98/train/trains/2344
+
+This is a protected route that requires the Authorization Token in the Header.
+
+Response (Status Code: 200):
+{
+  "trainName": "Delhi Door Hai Exp",
+  "trainNumber": "2343",
+  "departureTime": {
+    "Hours": 9,
+    "Minutes": 45,
+    "Seconds": 0
+  },
+  "seatsAvailable": {
+    "sleeper": 32,
+    "AC": 1
+  },
+  "price": {
+    "sleeper": 1,
+    "AC": 723
+  },
+  "delayedBy": 3
+}
